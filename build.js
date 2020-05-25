@@ -19,7 +19,12 @@ for(const page of files) {
     // Execute the template.
     const output = template
       .replace(/{{title}}/g, page === "index.html" ? "Home" : title(path.parse(page).name))
-      .replace(/{{body}}/g, html.toString());
+      // Unfortunately cannot use async api here, well not a big deal our site isn't that bloated to take ages.
+      // This is a simple {{include file}} directive and also cares to respect indents so the output is clean.
+      .replace(/([ \t]+)?{{include (.+)}}/g, (_, spaces, file) => spaces +
+        fs.readFileSync(path.join("src", "partials", file + ".html")).toString().split("\n").join("\n" + spaces))
+      .replace(/([ \t]+)?{{body}}/g, (_, spaces) => spaces +
+        html.toString().split("\n").join("\n" + spaces).trim());
 
     // Write the output.
     fs.writeFile(path.join("public", page), output, (err) => {

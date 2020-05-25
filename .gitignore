@@ -1,1 +1,2 @@
-public
+# Ignore the built HTML, but push the public/ folder for assets like CSS/JS
+public/*.html

@@ -3,7 +3,7 @@
 Personal website, about me and all that stuff.
 
 ## Usage
-View the site at [ravener.now.sh](https://ravener.now.sh)
+Visit the site at [ravener.now.sh](https://ravener.now.sh)
 
 For development: (Node.js needs to be installed)
 ```sh

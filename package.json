@@ -1,0 +1,30 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "My Personal Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pollen5/website.git"
+  },
+  "keywords": [
+    "website",
+    "static",
+    "zeit",
+    "now",
+    "html",
+    "css",
+    "templates",
+    "portfolio"
+  ],
+  "author": "PoLLeN <pollen@itsladybug.ml> (https://itsladybug.ml/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pollen5/website/issues"
+  },
+  "homepage": "https://github.com/pollen5/website#readme"
+}

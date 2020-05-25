@@ -18,7 +18,7 @@ for(const page of files) {
 
     // Execute the template.
     const output = template
-      .replace(/{{title}}/g, page === "index.html" ? "Home" : title(path.basename(page)))
+      .replace(/{{title}}/g, page === "index.html" ? "Home" : title(path.parse(page).name))
       .replace(/{{body}}/g, html.toString());
 
     // Write the output.

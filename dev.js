@@ -8,10 +8,16 @@ const server = http.createServer((req, res) => {
 
   fs.readFile(file, (err, file) => {
     if(err) {
+      if(err.code === "ENOENT") {
+        res.statusCode = 404;
+        res.end("Not Found.");
+        return;
+      }
+
       console.log(err);
       res.statusCode = 500;
       res.end("Internal Server Error.");
-      return
+      return;
     }
     
     let contentType;

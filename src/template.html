@@ -4,8 +4,11 @@
     <title>{{title}} | Raven</title>
     {{include meta}}
 
+    <!-- Bulma CSS -->
     <link type="text/css" rel="stylesheet" href="/bulma.min.css" />
     <script src="/navbar.js"></script>
+    <!-- Google Analytics -->
+    {{prod <script src="/analytics.js"></script>}}
   </head>
   <body>
     {{include navbar}}

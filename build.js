@@ -1,6 +1,11 @@
 const fs = require("fs");
 const path = require("path");
 
+// Determine if we are building for development.
+const dev = process.argv.includes("--dev");
+
+if(dev) console.log("Building for development mode.");
+
 // Ensure public/ exists.
 if(!fs.existsSync("public")) fs.mkdirSync("public");
 
@@ -24,7 +29,9 @@ for(const page of files) {
       .replace(/([ \t]+)?{{include (.+)}}/g, (_, spaces, file) => spaces +
         fs.readFileSync(path.join("src", "partials", file + ".html")).toString().split("\n").join("\n" + spaces))
       .replace(/([ \t]+)?{{body}}/g, (_, spaces) => spaces +
-        html.toString().split("\n").join("\n" + spaces).trim());
+        html.toString().split("\n").join("\n" + spaces).trim())
+      // {{prod <html>}} directives get commented out on development mode.
+      .replace(/{{prod (.+)}}/g, (_, body) => dev ? `<!-- ${body} -->` : body);
 
     // Write the output.
     fs.writeFile(path.join("public", page), output, (err) => {

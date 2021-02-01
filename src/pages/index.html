@@ -1,12 +1,34 @@
-<section class="hero is-light is-bold is-fullheight-with-navbar">
+<style>
+#headline {
+  background-image: url("/anime.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: contain;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  #headline {
+    padding-right: 140px;
+    text-align: left;
+  }
+}
+</style>
+<section id="headline" class="hero is-light is-bold is-fullheight-with-navbar">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
         I'm Raven Ravener
       </h1>
-      <h2 class="subtitle">
-        Software Engineer
-      </h2>
+      <h2 id="typewriter" class="subtitle"></h2>
     </div>
   </div>
 </section>
+<script src="/typewriter-effect.js"></script>
+<script>
+  const tw = new Typewriter("#typewriter", {
+    loop: true,
+    strings: ["Software Engineer", "Student", "Web Developer", "Open Source Contributor"],
+    autoStart: true
+  });
+</script>

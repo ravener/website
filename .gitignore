@@ -1,2 +1,3 @@
 # Ignore the built HTML, but push the public/ folder for assets like CSS/JS
 public/*.html
+node_modules

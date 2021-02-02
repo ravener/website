@@ -32,6 +32,9 @@ const server = http.createServer((req, res) => {
       case ".css":
         contentType = "text/css";
         break;
+      case ".png":
+        contentType = "image/png";
+        break;
     }
 
     if(contentType) res.setHeader("Content-Type", contentType);

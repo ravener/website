@@ -11,7 +11,7 @@ const md = require("markdown-it")({
 
 md.use(require("markdown-it-anchor"), {
   permalink: true,
-  permalinkBefore: true,
+  permalinkBefore: false,
   permalinkSymbol: "🔗" /* '§' */
 });
 

@@ -8,6 +8,7 @@
     <link type="text/css" rel="stylesheet" href="/bulma.min.css" />
     <link type="text/css" rel="stylesheet" href="/fontawesome-free-5.15.2-web/css/all.min.css" />
     <link type="text/css" rel="stylesheet" href="/default.min.css" />
+    <link type="text/css" rel="stylesheet" href="/main.css" />
 
     <script src="/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -18,21 +19,8 @@
     {{prod <script src="/analytics.js"></script>}}
 
 <style>
-
-.blog-body p {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-}
-
-@media (min-width: 500px) {
-  .blog-body {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-}
-
 .header-anchor {
-  font-size: 18px;
+  font-size: 15px;
 }
 </style>
   </head>
@@ -40,7 +28,7 @@
     {{include navbar}}
     <h1 class="block title has-text-centered">{{title}}</h1>
 
-    <div class="box media">
+    <div class="box media padded-content">
       <figure class="media-left image is-64x64">
         <img class="is-rounded" src="/pfp.jpg" />
       </figure>
@@ -54,7 +42,7 @@
     </div>
 
     <!-- TODO: include some stuff like published date, tags etc. -->
-    <div class="blog-body content">
+    <div class="padded-content content">
       {{body}}
     </div>
     <!-- TODO: comments -->

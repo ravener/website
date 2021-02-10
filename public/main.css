@@ -1,0 +1,30 @@
+/* Utilities to add some padding/margin to improve the display */
+
+.padded-content {
+  max-width: -webkit-calc(800px - 60px);
+  max-width:         calc(800px - 60px);
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .padded-content {
+    max-width: -webkit-calc(800px - 30px);
+    max-width:         calc(800px - 30px);
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .padded-content-desktop {
+    max-width: -webkit-calc(800px - 60px);
+    max-width:         calc(800px - 60px);
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

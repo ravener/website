@@ -15,9 +15,6 @@
 
     <script src="/navbar.js"></script>
 
-    <!-- Google Analytics -->
-    {{prod <script src="/analytics.js"></script>}}
-
 <style>
 .header-anchor {
   font-size: 15px;
@@ -26,9 +23,9 @@
   </head>
   <body>
     {{include navbar}}
-    <h1 class="block title has-text-centered">{{title}}</h1>
+    <h1 class="block title padded-content">{{title}}</h1>
 
-    <div class="box media padded-content">
+    <div class="block media padded-content">
       <figure class="media-left image is-64x64">
         <img class="is-rounded" src="/pfp.jpg" />
       </figure>
@@ -37,11 +34,11 @@
         <div class="content">
           <h2 class="title is-5">Raven Ravener</h2>
           <h3 style="color: #828282" class="subtitle is-7">Published at {{date}}</h3>
+          <!-- TODO: Add tags and stuff here -->
         </div>
       </div>
     </div>
 
-    <!-- TODO: include some stuff like published date, tags etc. -->
     <div class="padded-content content">
       {{body}}
     </div>

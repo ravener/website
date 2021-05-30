@@ -20,11 +20,11 @@ md.use(require("markdown-it-table-of-contents"));
 // Determine if we are building for development.
 const dev = process.argv.includes("--dev");
 
-if(dev) console.log("Building for development mode.");
+if (dev) console.log("Building for development mode.");
 
 // Ensure public/ exists.
-if(!fs.existsSync("public")) fs.mkdirSync("public");
-if(!fs.existsSync("public/blog")) fs.mkdirSync("public/blog");
+if (!fs.existsSync("public")) fs.mkdirSync("public");
+if (!fs.existsSync("public/blog")) fs.mkdirSync("public/blog");
 
 // All pages.
 const files = fs.readdirSync(path.join("src", "pages"));
@@ -33,10 +33,10 @@ const template = fs.readFileSync(path.join("src", "template.html")).toString();
 
 const title = (s) => s[0].toUpperCase() + s.slice(1);
 
-for(const page of files) {
+for (const page of files) {
   // Used the async version here to allow files to be quickly built in parallel
   fs.readFile(path.join("src", "pages", page), (err, html) => {
-    if(err) throw err;
+    if (err) throw err;
 
     // Execute the template.
     const output = template
@@ -59,6 +59,8 @@ for(const page of files) {
 
 const blogTemplate = fs.readFileSync(path.join("src", "template-blog.html")).toString();
 
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 // Build the blog
 const posts = fs.readdirSync("blog").map(post => ({
   file: post,
@@ -78,7 +80,7 @@ for(const post of posts) {
 
     // You know the drill. Maybe I should put this in a function but it's not like I'm gonna write this everyday
     const output = blogTemplate
-      .replace(/{{date}}/g, `${post.date.year}/${post.date.month}/${post.date.day}`)
+      .replace(/{{date}}/g, `${months[parseInt(post.date.month) - 1]} ${post.date.day}, ${post.date.year}`)
       .replace(/([ \t]+)?{{include (.+)}}/g, (_, spaces, file) => spaces +
         fs.readFileSync(path.join("src", "partials", file + ".html")).toString().split("\n").join("\n" + spaces))
       .replace(/{{title}}/g, post.title)

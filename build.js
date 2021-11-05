@@ -51,7 +51,7 @@ for (const page of files) {
 
     // Write the output.
     fs.writeFile(path.join("public", page), output, (err) => {
-      if(err) throw err;
+      if (err) throw err;
       console.log(`Built ${path.join("public", page)}`);
     });
   });
@@ -72,9 +72,9 @@ const posts = fs.readdirSync("blog").map(post => ({
   }
 }));
 
-for(const post of posts) {
+for (const post of posts) {
   fs.readFile(path.join("blog", post.file), (err, page) => {
-    if(err) throw err;
+    if (err) throw err;
 
     const html = md.render(page.toString());
 
@@ -84,6 +84,7 @@ for(const post of posts) {
       .replace(/([ \t]+)?{{include (.+)}}/g, (_, spaces, file) => spaces +
         fs.readFileSync(path.join("src", "partials", file + ".html")).toString().split("\n").join("\n" + spaces))
       .replace(/{{title}}/g, post.title)
+    // The indent part ruins the highlighted codeblocks, oh well.
     //.replace(/([ \t]+)?{{body}}/g, (_, spaces) => spaces +
     //   md.split("\n").join("\n" + spaces).trim())
       .replace(/{{body}}/g, html)
@@ -91,7 +92,7 @@ for(const post of posts) {
 
     const filePath = path.join("public", "blog", post.file.replace(".md", ".html"));
     fs.writeFile(filePath, output, (err) => {
-      if(err) throw err;
+      if (err) throw err;
       console.log(`Built blog post ${filePath}`);
     });
   });
